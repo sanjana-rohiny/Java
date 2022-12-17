@@ -8,11 +8,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class Sample3 extends JFrame implements ActionListener {
+public class Sample3 extends JFrame {
 
-	JButton b1;
-	JButton b2;
-	JButton b3;
+	JButton b1;	
 	JLabel label;
 	
 	public Sample3() {
@@ -20,45 +18,25 @@ public class Sample3 extends JFrame implements ActionListener {
 		
 		label = new JLabel("Press a Button");
 		b1 = new JButton("OK");
-		b2 = new JButton("Cancel");
-		b3 = new JButton("Test Button");
 		
 		add(label);
 		add(b1);
-		add(b2);
-		add(b3);
 		
 		setLayout(new FlowLayout());
-		setSize(700,300);
+		setSize(500,400);
 		setVisible(true);
 		
-		b1.addActionListener(this);
-		b2.addActionListener(this);
-		
-		b3.addActionListener(new ActionListener() {
-			@Override
+		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				label.setText("Test Button Pressed..!");
+				JOptionPane.showMessageDialog(rootPane, 
+						"Button pressed");
 			}
 		});
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == b1) {
-			label.setText("OK Pressed..!");
-		}
-		
-		if(e.getSource() == b2) {
-			label.setText("Cancel Pressed..!");
-		}
-	}
-	
 	public static void main (String[] args) {
 		Sample3 s3 = new Sample3();		
 	}
-
-
 }

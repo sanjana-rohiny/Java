@@ -1,43 +1,70 @@
 package arraylist;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Scanner;
-import java.util.StringTokenizer;
-import java.util.Vector;
+import java.util.*;
 
-import org.omg.CORBA.BooleanSeqHelper;
+class Book {
+
+	int id;
+	String title;
+	String author;
+	
+	public Book(int id, String title, String author) {
+		this.id = id;
+		this.title = title;
+		this.author = author;
+	}
+	
+	public void printBookInfo() {
+		System.out.println("Book id = " + id);
+		System.out.println("Book name = " + title);
+		System.out.println("Book id = " + author);
+	}
+}
 
 public class ArrayLIST {
 	
-	static void printBook(ArrayList <Book> shelf) {
+	static void printBookEx(ArrayList <Book> shelf) {
+        System.out.println("Books in the BookShelf:");
+
+		for (int i=0; i<shelf.size(); i++) {
+			
+            Book b = shelf.get(i);
+
+			System.out.println(b.id + " " + b.title + " " + b.author);
+		}
+		System.out.println();
+	}
 	
+	// for each .. loop
+	static void printBook(ArrayList <Book> shelf) {
+        System.out.println("Books in the BookShelf:");
+
 		for (Book b: shelf) {
 			System.out.println(b.id + " " + b.title + " " + b.author);
 		}
 		System.out.println();
 	}
 	
-	public static void main(String[] args) {
-		
-		Scanner sc = new Scanner(System.in);
-		
-		String str = sc.nextLine();
-		StringTokenizer st = new StringTokenizer(str," ");
-		
-		while(st.hasMoreTokens()) {
-			int n = Integer.parseInt(st.nextToken());
-			System.out.println("   ->" + n);
-		}
-	    /*
-	      ArrayList <Book> bookShelf = new ArrayList <Book>();
-	     
+	public static void parseBookShelf(
+			ArrayList<Book> shelf) {
+        Iterator<Book> iterator = shelf.iterator();
 
-		Book book1 = new Book(1,"book_title1", "book_author1");
-		Book book2 = new Book(2,"book_title2", "book_author2");
+        System.out.println("Books in the BookShelf:");
+
+        while (iterator.hasNext()) {
+            Book b = iterator.next();
+			System.out.println(b.id + " " + b.title + " " + b.author);
+
+        }
+    }
+	
+	public static void main(String[] args) {
+	    ArrayList <Book> bookShelf = new ArrayList <Book>();
+
+		Book book1 = new 
+				Book(1,"book_title1", "book_author1");
+		Book book2 = new
+				Book(2,"book_title2", "book_author2");
 		Book book3 = new Book(3,"book_title3", "book_author3");
 		Book book4 = new Book(4,"book_title4", "book_author4");
 		Book book5 = new Book(5,"book_title5", "book_author5");
@@ -50,7 +77,10 @@ public class ArrayLIST {
 		bookShelf.add(book5);
 
 		// print info
+		printBookEx(bookShelf);
 		printBook(bookShelf);
+		parseBookShelf(bookShelf);
+		
 		
 		// add at index - insert at inde 4
 		Book book6 = new Book(6,"book_title6", "book_author6");
@@ -96,7 +126,7 @@ public class ArrayLIST {
 		status = bookShelf.contains(b1);
 		System.out.println("Book shelf caontain b1 = " + status);
 
-		// caontainsall
+		// containsAll
 		bookList.add(book1);
 		bookList.add(book2);
 		bookList.add(book3);
@@ -178,7 +208,7 @@ public class ArrayLIST {
 			}
 		}
 		System.out.println();
-		printBook(bookShelf); */
+		printBook(bookShelf); 
 	}
 
 }

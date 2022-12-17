@@ -1,10 +1,10 @@
 //package com.java.association;
 
 class Hospital {
-	private CEO ceo;
+	private Doctor doctor;
 	
-	public void addCEO(CEO ceo) {
-		this.ceo = ceo;
+	public void addDoctor(Doctor doctor) {
+		this.doctor = doctor;
 	}
 	
 	public void printCEO() {		
@@ -12,11 +12,11 @@ class Hospital {
 	}
 }
 
-class CEO {
+class Doctor {
 	private String name;
 	private int Id;
 
-	CEO(String name) {
+	Doctor(String name) {
 		// TODO Auto-generated constructor stub
 		this.name = name;
 		this.Id = 1;
@@ -32,11 +32,11 @@ public class Association {
 	public static void main(String[] srgs) {		
 		
 		System.out.println("---------One directional Association-----------");
-		CEO ceo = new CEO("John Abraham");
+		Doctor doctor = new Doctor("John Abraham");
 
 		Hospital hospital = new Hospital();
-		hospital.addCEO(ceo);
+		hospital.addDoctor(doctor);
 
-		hospital.printCEO();
+		hospital.printDoctor();
 	}
 }

@@ -5,24 +5,27 @@ import java.io.IOException;
 
 public class BufferedReaderTest {
 
-	static void readWriteFile() throws IOException {
-		FileReader fis = new FileReader("malayalam.txt");		
-		BufferedReader reader = new BufferedReader(fis);
-		
-		FileWriter fos = new FileWriter("output.txt");
-		BufferedWriter writer = new BufferedWriter(fos);
-
-		char b[] = new char[20];
-		while (reader.read(b) != -1) {
-			System.out.println(new String(b));
-			writer.write(b);
-		}
-	}
-
-	public static void main (String[] args) {
+	public static void main(String[] args) {
 		try {
 			System.out.println("Character Stream");
-			readWriteFile();
+			FileReader fis = new FileReader("malayalam.txt");
+			BufferedReader reader = new BufferedReader(fis);
+
+			FileWriter fos = new FileWriter("c_output.txt");
+			BufferedWriter writer = new BufferedWriter(fos);
+
+			String line;
+			while ((line = reader.readLine()) != null) {
+				System.out.println(line);
+				writer.write(line);
+			}
+			
+			writer.close();
+			fos.close();
+			
+			reader.close();
+			fis.close();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

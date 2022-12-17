@@ -1,59 +1,46 @@
 package consolereader;
+
 import java.io.*;
+
 public class ConsoleIO {
 
-	static void consoleRead() throws IOException {
-	    char c = 0;
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("Enter characters ....(q to quit)");
-		while(c != 'q') {
-			c = (char) br.read();
-			System.out.println(c);
-		}
-		System.out.println("Exit...!");
-	}
-	
-	static void readString() throws IOException {
-	    String str = null;
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("Enter line ....(stop to quit)");
-		do{
-			str = br.readLine();
-			System.out.println(str);
-		} while(true != str.equalsIgnoreCase("stop"));
-		System.out.println("Exit...!");
-	}
-	
-	static void consoleWrite() throws IOException {	
-		byte b[] = {65,66,67,68,69,70,71,72};
-		int i = 65;
-		/*
-		 * System.out.write(b[0]); System.out.write(i);
-		 * 
-		 * System.out.write('A'); System.out.write('\n');
-		 */
-//		        OR 
-		System.out.write('A');
-		System.out.write('\n');
+	static void consoleRead() {
+		String str = null;
 
-		//System.out.flush();
-		
-		 
-		//byte bArr[] = {'G','e','n','è','s','e','-', 'D','i','e','u', 'a', 'c','r','é','é', 'l','e', 'c','i','e','l'};
-		//String str = "Genèse - Dieu a créé le ciel et la terre";
-		//System.out.write(str.getBytes(), 0,10);
-	}
-	
-	public String toString() {
-	      return getClass().getName()+"@"+Integer.toHexString(hashCode());
-	}
-	
-	public static void main (String[] args) {
 		try {
-			consoleWrite();
-			
+			BufferedReader br = 
+		new BufferedReader(new InputStreamReader(System.in));
+			System.out.println("Enter line ....(stop to quit)");
+			do {
+				str = br.readLine();
+				System.out.println(str);
+			} while (true != str.equalsIgnoreCase("stop"));
+			System.out.println("Exit...!");
+		} catch (IOException e) {
+
+		}
+	}
+
+	static void consoleWrite(String message) {
+		try {
+			// Create a BufferedWriter to write to System.out (console)
+			BufferedWriter consoleWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+
+			// Now you can write to the console using consoleWriter
+			consoleWriter.write(message);
+			consoleWriter.newLine(); // Optionally, add a newline character
+
+			// Don't forget to flush the writer to ensure the output is displayed
+			consoleWriter.flush();
+
 		} catch (IOException e) {
 			e.printStackTrace();
-		}	
+		}
+	}
+
+	public static void main(String[] args) {
+
+		consoleWrite("Hello world ...!");
+		consoleRead();
 	}
 }

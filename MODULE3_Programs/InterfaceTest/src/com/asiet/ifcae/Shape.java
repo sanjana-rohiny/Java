@@ -1,12 +1,11 @@
 package com.asiet.ifcae;
 
-public interface Shape {
+public class Shape {
 	int YES = 1;
 	int NO = 0;
 	
-	void printSides();
-
-	default void testDefault() {
-		System.out.println("testDefault()");
+	public void draw() {
+		System.out.println("Draw Shape..!");
 	}
+
 }

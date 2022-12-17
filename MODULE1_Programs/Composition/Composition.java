@@ -3,23 +3,24 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class Hospital {
-	private List<Doctor> doctorPanel;
+class University {
+	private List<Department> deptList;
 	
-	public Hospital() {
+	public University() {
 		// TODO Auto-generated constructor stub
-		doctorPanel = new ArrayList<Doctor>();
+		deptList = new ArrayList<Department>();
 	}
 	
-	public void setDoctorPanel(String name, int id) {
+	public void addDepartment(String name, int id) {
 		
-		Doctor doctor = new Doctor(name, id);
-		doctorPanel.add(doctor);
+		//life of department tightly coupled to that of University
+		Department dept = new Department(name, id);
+		deptList.add(dept);
 	}
 	
-	public void printDoctorList() {		
-		for (int i=0; i<doctorPanel.size(); i++) {
-			System.out.println("Doctor [" + i + "] = " + doctorPanel.get(i).getName()); 
+	public void printDepartments() {		
+		for (int i=0; i<deptList.size(); i++) {
+			System.out.println("Department [" + i + "] = " + deptList.get(i).getName()); 
 		}
 	}
 	
@@ -28,11 +29,11 @@ class Hospital {
 	}
 } 
 
-class Doctor {
+class Department {
 	private String name;
 	private int Id;
 	
-	Doctor(String name, int id) {
+	Department(String name, int id) {
 		// TODO Auto-generated constructor stub
 		this.name = name;
 		this.Id = id;
@@ -51,23 +52,23 @@ public class Composition {
 
 	public static void main(String[] srgs) {	
 		
-		Hospital hospital = new Hospital();
+		University university = new University();
 		
-		hospital.setDoctorPanel("Alice", 100);
-		hospital.setDoctorPanel("Bob", 101);
-		hospital.setDoctorPanel("Sam", 102);
-		hospital.setDoctorPanel("Ericsson", 103);
+		university.addDepartment("CS", 100);
+		university.addDepartment("AI", 101);
+		university.addDepartment("EEE", 102);
+		university.addDepartment("DS", 103);
 		
-		hospital.printDoctorList();
+		university.printDepartments();
 		
-		System.out.println("Deleting Hospital class");
+		System.out.println("Deleting Composition class");
 		
 		
 		// For compiling , use javac -Xlint:deprecation Composition.java
 		
 		// delete whole class
 		// invoke "whole"  class deallocation.
-		hospital = null;
+		university = null;
 		System.gc();
 		System.runFinalization();
 		// Observe from print statement, 

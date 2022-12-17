@@ -1,12 +1,15 @@
 package com.asiet.ifcae;
 
-public class Triangle implements Shape {
+public class Triangle extends Shape implements Description {
 
-	@Override
-	public void printSides() {
-		// TODO Auto-generated method stub
+	// overriding function from base Shape
+	public void draw() {
 		System.out.println("Triangle:: No of Sides = 3");
-
 	}
 
+	// impemented for interface Descrition
+	public void printInfo() {
+		System.out.println("Rectangle:: printInfo()");
+	}
+	
 }
